@@ -1,0 +1,44 @@
+Class documentation
+<---- javadoc command: ---->
+E:\greenfoot\jdk\bin\javadoc.exe
+-author
+-version
+-nodeprecated
+-protected
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+1.7
+-classpath
+E:\greenfoot\Greenfoot\lib\extensions\greenfoot.jar;E:\greenfoot\Greenfoot\lib\bluejcore.jar;E:\greenfoot\Greenfoot\lib\bluejeditor.jar;E:\greenfoot\Greenfoot\lib\bluejext.jar;E:\greenfoot\Greenfoot\lib\AppleJavaExtensions.jar;E:\greenfoot\Greenfoot\lib\junit-4.8.2.jar;E:\greenfoot\Greenfoot\lib\bluej.jar;E:\greenfoot\Greenfoot\lib\commons-httpclient-3.1.jar;E:\greenfoot\Greenfoot\lib\commons-logging-api-1.1.2.jar;E:\greenfoot\Greenfoot\lib\commons-codec-1.3.jar;E:\greenfoot\Greenfoot\lib\jl1.0.1.jar;E:\greenfoot\Greenfoot\lib\opencsv-2.3.jar;E:\greenfoot\Greenfoot\scenarios\bouncer
+-d
+E:\greenfoot\Greenfoot\scenarios\bouncer\doc
+-encoding
+UTF-8
+-charset
+UTF-8
+-docletpath
+E:\greenfoot\Greenfoot\lib\bjdoclet.jar
+-doclet
+bluej.doclet.doclets.formats.html.HtmlDoclet
+E:\greenfoot\Greenfoot\scenarios\bouncer\Bouncer.java
+<---- end of javadoc command ---->
+Loading source file E:\greenfoot\Greenfoot\scenarios\bouncer\Bouncer.java...
+Constructing Javadoc information...
+Standard Doclet version 1.7.0_21
+Building tree for all the packages and classes...
+Generating E:\greenfoot\Greenfoot\scenarios\bouncer\doc\Bouncer.html...
+E:\greenfoot\Greenfoot\scenarios\bouncer\Bouncer.java:57: warning - @param argument "y" is not a parameter name.
+E:\greenfoot\Greenfoot\scenarios\bouncer\Bouncer.java:57: warning - @return tag cannot be used in method with void return type.
+Generating E:\greenfoot\Greenfoot\scenarios\bouncer\doc\package-frame.html...
+Generating E:\greenfoot\Greenfoot\scenarios\bouncer\doc\package-summary.html...
+Generating E:\greenfoot\Greenfoot\scenarios\bouncer\doc\constant-values.html...
+Building index for all the packages and classes...
+Building index for all classes...
+Generating E:\greenfoot\Greenfoot\scenarios\bouncer\doc\allclasses-frame.html...
+Generating E:\greenfoot\Greenfoot\scenarios\bouncer\doc\allclasses-noframe.html...
+Generating E:\greenfoot\Greenfoot\scenarios\bouncer\doc\index.html...
+Generating E:\greenfoot\Greenfoot\scenarios\bouncer\doc\stylesheet.css...
+2 warnings

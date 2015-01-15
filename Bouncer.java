@@ -1,0 +1,61 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
+
+/**
+ * Write a description of class Bouncer here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Bouncer extends ScrollingActor
+{
+    // instance variables - replace the example below with your own
+    protected Vector2D velocity;
+    protected Vector2D acceleration;
+    protected boolean flying;
+
+    /**
+     * Constructor for objects of class Bouncer
+     */
+    public Bouncer()
+    {
+        velocity = new Vector2D(0, 0);
+        acceleration = new Vector2D(0, 0.1);  // Gravity acting downward
+        flying = true;
+    }
+
+    @Override
+    public void act()
+    {
+        bounceOffStuff();
+        move();
+        super.act();
+    }
+    
+    public void bounceOffStuff()
+    {
+        //for (Actor other : getIntersectingObjects(Actor))
+        if (position.y > 400 && velocity.y > 0)
+        {
+            if (velocity.y < 1) {
+                velocity.y = 0; // Land
+                flying = false;
+            } else {
+                velocity.y *= -0.7; // Bounce but not as high
+            }
+        }
+    }    
+    
+    /**
+     * An example of a method - replace this comment with your own
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y 
+     */
+    public void move()
+    {
+        position.add(velocity);
+        if (flying) {
+            velocity.add(acceleration);
+        }
+    }
+}
