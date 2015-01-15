@@ -14,7 +14,7 @@ public class Player extends Bouncer
      */
     public void act() 
     {
-        if (Greenfoot.isKeyDown("up")) {
+        if (Greenfoot.isKeyDown("up") && !flying) {
             velocity.y = -5;
             flying = true;
         }

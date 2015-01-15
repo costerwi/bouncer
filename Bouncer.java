@@ -34,19 +34,23 @@ public class Bouncer extends ScrollingActor
     
     public void bounceOffStuff()
     {
-        /*List l = getIntersectingObjects(ScrollingActor.class);
-        for (ScrollingActor a : l) {
-        }*/
+        List l = getIntersectingObjects(ScrollingActor.class);
+        //for(Iterator<ScrollingActor> i = l.iterator(); i.hasNext(); ) {
+        //}
+        for (Object a : l) {
+        }
         Actor other = getOneIntersectingObject(Sand.class);
         
         if (null == other) {
             flying = true;  // Not touching anything
-        } else if (velocity.y > 0) {
-            if (velocity.y < 1) {
-                velocity.y = 0; // Land
-                flying = false;
-            } else {
-                velocity.y *= -0.7; // Bounce but not as high
+        } else {
+            flying = false;
+            if (velocity.y > 0) {
+                if (velocity.y < 1) {
+                    velocity.y = 0; // Land
+                } else {
+                    velocity.y *= -0.7; // Bounce but not as high
+                }
             }
         }
     }    
