@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
+import java.util.List;
 
 /**
  * Write a description of class Bouncer here.
@@ -33,9 +34,14 @@ public class Bouncer extends ScrollingActor
     
     public void bounceOffStuff()
     {
-        //for (Actor other : getIntersectingObjects(Actor))
-        if (position.y > 400 && velocity.y > 0)
-        {
+        /*List l = getIntersectingObjects(ScrollingActor.class);
+        for (ScrollingActor a : l) {
+        }*/
+        Actor other = getOneIntersectingObject(Sand.class);
+        
+        if (null == other) {
+            flying = true;  // Not touching anything
+        } else if (velocity.y > 0) {
             if (velocity.y < 1) {
                 velocity.y = 0; // Land
                 flying = false;
