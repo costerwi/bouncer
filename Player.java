@@ -14,20 +14,24 @@ public class Player extends Bouncer
      */
     public void act() 
     {
+        if (getY() > getWorld().getHeight()) {
+            GameWorld w = (GameWorld) getWorld();
+            w.loadNextLevel();
+        }
+        
         if (Greenfoot.isKeyDown("up") && !flying) {
-            velocity.y = -5;
+            velocity.y = -6;    // Start a jump!
             flying = true;
         }
-        //if (Greenfoot.isKeyDown("down")) {
-        //    setLocation(getX(), getY() + 3);
-        //}
+
         if (Greenfoot.isKeyDown("left")) {
-            velocity.x = -2;
+            velocity.x = Math.max(-4, velocity.x - 0.2);
         } else if (Greenfoot.isKeyDown("right")) {
-            velocity.x = 2;
+            velocity.x = Math.min(+4, velocity.x + 0.2);
         } else {
             velocity.x = 0;
         }
-       super.act();
+        
+        super.act();
     }    
 }
