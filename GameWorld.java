@@ -36,6 +36,7 @@ public class GameWorld extends ScrollingWorld
     {
         removeObjects(getObjects(Sand.class));
         removeObjects(getObjects(Brick.class));
+        removeObjects(getObjects(Enemy.class));
         mainPlayer.setLocation(150, 50);
         for (int y = 0; y < 10; y++) {
             for (int x = 0; x < levels.getWidth(); x++) {
