@@ -47,7 +47,7 @@ public abstract class ScrollingActor extends Actor
     
     public double getBouncyness()
     {
-        return 0;
+        return -0.5;
     }
     
     /**
