@@ -10,7 +10,7 @@ public class Enemy extends Bouncer
 {
     public Enemy()
     {
-        velocity.x = 3;
+        velocity.x = -3; // Start moving to the left
     }
     
     /**
