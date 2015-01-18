@@ -10,6 +10,8 @@ import java.awt.Color;
 public class GameWorld extends ScrollingWorld
 {
     Player mainPlayer;
+    GreenfootImage levels;
+    int nextLevel;
     
     /**
      * Constructor for objects of class GameWorld.
@@ -17,32 +19,41 @@ public class GameWorld extends ScrollingWorld
      */
     public GameWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(800, 600, 1); 
-        loadLevel("levels.png");
+        super(800, 600, 1);
         mainPlayer = new Player();
-        addObject(mainPlayer, 100, 100);
+        addObject(mainPlayer, 150, 50);
+        levels = new GreenfootImage("levels.png");
+        nextLevel = 0;
+        loadNextLevel();
     }
     
     public void act()
     {
-        //scrollPosition.x += 0.001;
-        scrollPosition.x = mainPlayer.position.x - 100;
-        //double dx = mainPlayer.position.x - scrollPosition.x - 100;
-        //scrollPosition.x += 0.01*dx;
-        //repaint();
+        scrollPosition.x = mainPlayer.position.x - 150; // Scroll with player
     }
     
-    public void loadLevel(String filename)
+    public void loadNextLevel()
     {
-        GreenfootImage levels = new GreenfootImage(filename);
-        for (int y = 0; y < levels.getHeight(); y++) {
+        removeObjects(getObjects(Sand.class));
+        removeObjects(getObjects(Brick.class));
+        mainPlayer.setLocation(150, 50);
+        for (int y = 0; y < 10; y++) {
             for (int x = 0; x < levels.getWidth(); x++) {
-                Color c = levels.getColorAt(x, y);
+                Color c = levels.getColorAt(x, y + nextLevel*10);
                 if (c.equals(Color.black)) {
-                    addObject(new Sand(), x*60, y*60);
+                    addObject(new Sand(), x*60, y*60 + 30);
+                } else if (c.equals(Color.red)) {
+                    addObject(new Brick(), x*60, y*60 + 30);
+                } else if (c.equals(Color.green)) {
+                    addObject(new Enemy(), x*60, y*60 + 30);
                 }
             }
+        }
+
+        nextLevel += 1;
+        if (10*nextLevel + 10 > levels.getHeight()) {
+            // Extended past the last level
+            nextLevel = 0;  // Reset to first level
         }
     }
 }
