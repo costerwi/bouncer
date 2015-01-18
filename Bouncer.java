@@ -11,7 +11,6 @@ public class Bouncer extends ScrollingActor
 {
     // instance variables - replace the example below with your own
     protected Vector2D velocity;
-    protected Vector2D acceleration;
     protected boolean flying;
 
     /**
@@ -20,7 +19,6 @@ public class Bouncer extends ScrollingActor
     public Bouncer()
     {
         velocity = new Vector2D(0, 0);
-        acceleration = new Vector2D(0, 0.1);  // Gravity acting downward
         flying = true;
     }
 
@@ -76,7 +74,7 @@ public class Bouncer extends ScrollingActor
     {
         position.add(velocity);
         if (flying) {
-            velocity.add(acceleration);
+            velocity.y += 0.1;  // gravity
         }
     }
 }
