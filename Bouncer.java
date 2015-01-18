@@ -30,26 +30,37 @@ public class Bouncer extends ScrollingActor
         bounceOffStuff();
         move();
         super.act();
-    }
+    }    
     
     public void bounceOffStuff()
     {
-        List l = getIntersectingObjects(ScrollingActor.class);
+        //List l = getIntersectingObjects(ScrollingActor.class);
         //for(Iterator<ScrollingActor> i = l.iterator(); i.hasNext(); ) {
         //}
-        for (Object a : l) {
-        }
-        Actor other = getOneIntersectingObject(Sand.class);
+        //for (Object a : l) {
+        //}
         
-        if (null == other) {
-            flying = true;  // Not touching anything
+        List touchingObjects = getIntersectingObjects(ScrollingActor.class);
+        if (touchingObjects.isEmpty()) {
+            flying = true;
         } else {
-            flying = false;
-            if (velocity.y > 0) {
-                if (velocity.y < 1) {
-                    velocity.y = 0; // Land
-                } else {
-                    velocity.y *= -0.7; // Bounce but not as high
+            for (Object o : touchingObjects) {
+                ScrollingActor a = (ScrollingActor) o; // cast from Object to ScrollingActor
+                int dx = (getX() - a.getX());
+                int dy = (getY() - a.getY());
+                if (Math.abs(dx) > Math.abs(dy) + 2) {
+                    // Touching object in horizontal direction
+                    if (dx * velocity.x < 0) {
+                        // Moving toward object
+                        velocity.x *= -1;
+                    }
+                } else if (Math.abs(dy) > Math.abs(dx) + 2) {
+                    flying = false;  // Allow jumping
+                    if (Math.abs(velocity.y) < 1) {
+                        velocity.y = 0; // Land on object
+                    } else if (dy*velocity.y < 0) {
+                        velocity.y *= a.getBouncyness();
+                    }
                 }
             }
         }
