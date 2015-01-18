@@ -9,9 +9,8 @@ import java.util.List;
  */
 public class Bouncer extends ScrollingActor
 {
-    // instance variables - replace the example below with your own
     protected Vector2D velocity;
-    protected boolean flying;
+    protected boolean flying; // True when gravity is affecting Bouncer
 
     /**
      * Constructor for objects of class Bouncer
@@ -32,15 +31,9 @@ public class Bouncer extends ScrollingActor
     
     public void bounceOffStuff()
     {
-        //List l = getIntersectingObjects(ScrollingActor.class);
-        //for(Iterator<ScrollingActor> i = l.iterator(); i.hasNext(); ) {
-        //}
-        //for (Object a : l) {
-        //}
-        
         List touchingObjects = getIntersectingObjects(ScrollingActor.class);
         if (touchingObjects.isEmpty()) {
-            flying = true;
+            flying = true;  // could happen if player steps off a cliff
         } else {
             for (Object o : touchingObjects) {
                 ScrollingActor a = (ScrollingActor) o; // cast from Object to ScrollingActor
@@ -50,10 +43,11 @@ public class Bouncer extends ScrollingActor
                     // Touching object in horizontal direction
                     if (dx * velocity.x < 0) {
                         // Moving toward object
-                        velocity.x *= -1;
+                        velocity.x *= -1;  // Perfect bounce
                     }
                 } else if (Math.abs(dy) > Math.abs(dx) + 2) {
-                    flying = false;  // Allow jumping
+                    // Touching object "a" in vertical direction
+                    flying = false;  // No longer in air; allow jumping
                     if (Math.abs(velocity.y) < 1) {
                         velocity.y = 0; // Land on object
                     } else if (dy*velocity.y < 0) {
@@ -65,10 +59,7 @@ public class Bouncer extends ScrollingActor
     }    
     
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Update the position member based on current velocity.
      */
     public void move()
     {
