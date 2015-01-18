@@ -44,7 +44,12 @@ public abstract class ScrollingActor extends Actor
         w.subtract(getWorld().getScroll()); // Calculate relative position within scrolled window
         super.setLocation((int) w.x, (int) w.y);
     }
-        
+    
+    public double getBouncyness()
+    {
+        return 0;
+    }
+    
     /**
      * Get the current world casted to ScrollingWorld.
      */
