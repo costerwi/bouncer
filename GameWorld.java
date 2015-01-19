@@ -34,19 +34,24 @@ public class GameWorld extends ScrollingWorld
     
     public void loadNextLevel()
     {
+        // Reset player's position
+        mainPlayer.setLocation(150, 50);
+        
+        // Remove objects from old level
         removeObjects(getObjects(Sand.class));
         removeObjects(getObjects(Brick.class));
         removeObjects(getObjects(Enemy.class));
-        mainPlayer.setLocation(150, 50);
+        
+        // Scan png file and build new level
         for (int y = 0; y < 10; y++) {
             for (int x = 0; x < levels.getWidth(); x++) {
-                Color c = levels.getColorAt(x, y + nextLevel*10);
+                Color c = levels.getColorAt(x, y + 10*nextLevel);
                 if (c.equals(Color.black)) {
-                    addObject(new Sand(), x*60, y*60 + 30);
-                } else if (c.equals(Color.red)) {
-                    addObject(new Brick(), x*60, y*60 + 30);
+                    addObject(new Sand(), 60*x, 60*y + 30);
+                } else if (c.equals(Color.red)) { // Color must match exactly
+                    addObject(new Brick(), 60*x, 60*y + 30);
                 } else if (c.equals(Color.green)) {
-                    addObject(new Enemy(), x*60, y*60 + 30);
+                    addObject(new Enemy(), 60*x, 60*y + 30);
                 }
             }
         }
