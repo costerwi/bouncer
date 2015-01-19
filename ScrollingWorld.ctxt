@@ -1,6 +1,0 @@
-#BlueJ class context
-comment0.params=worldWidth\ worldHeight\ cellSize
-comment0.target=ScrollingWorld(int,\ int,\ int)
-comment1.params=
-comment1.target=Vector2D\ getScroll()
-numComments=2
