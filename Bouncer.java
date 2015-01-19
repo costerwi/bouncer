@@ -47,10 +47,13 @@ public class Bouncer extends ScrollingActor
                     }
                 } else if (Math.abs(dy) > Math.abs(dx) + 2) {
                     // Touching object "a" in vertical direction
-                    flying = false;  // No longer in air; allow jumping
-                    if (Math.abs(velocity.y) < 1) {
-                        velocity.y = 0; // Land on object
-                    } else if (dy*velocity.y < 0) {
+                    if (dy < 0) { // On top of an object
+                        flying = false;  // Allow jumping
+                        if (Math.abs(velocity.y) < 1) {
+                            velocity.y = 0;
+                        }
+                    }
+                    if (dy*velocity.y < 0) {
                         velocity.y *= a.getBouncyness();
                     }
                 }
